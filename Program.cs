@@ -36,6 +36,12 @@ namespace DragAndDropTest
                 .Build()
                 .Perform();
 
+            var columnA = driver.FindElement(By.Id("column-a")).Text.Trim();
+            var columnB = driver.FindElement(By.Id("column-b")).Text.Trim();
+
+            ClassicAssert.AreEqual("B", columnA);
+            ClassicAssert.AreEqual("A", columnB);
+
             if (driver.FindElement(By.Id("column-a")).Text.Trim().Contains("B") && driver.FindElement(By.Id("column-b")).Text.Trim().Contains("A"))
                 Console.WriteLine("Dragged and dropped");
             else Console.WriteLine("something went wrong");
